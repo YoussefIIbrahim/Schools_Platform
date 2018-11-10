@@ -1,0 +1,28 @@
+<html>
+
+<?php
+/* This will give an error. Note the output
+ * above, which is before the header() call
+(
+answer varchar(100),
+QID integer,
+ccode integer,
+cname varchar(30)
+)
+
+ */
+ 
+
+ $mysqli = new mysqli("localhost", "root", "1234", "schoolspr");
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+} 
+$sql = 'CALL Teacher_Answer_Questions ($_POST["answer"]'.', '.'$_POST["id"] ,'.'$_POST["courseC"],'.'$_POST ["courseN"]'.') ';
+$mysqli->query($sql) ; 
+ echo "<h1> The Answer has been submitted </h1>";
+
+
+header('Refresh:1; http://localhost/MS4/teacher/index.php');
+
+?>
+ 

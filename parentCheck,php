@@ -1,0 +1,44 @@
+<?php
+
+require 'connect.php';
+$sql="SELECT * FROM Parents WHERE username='uname'";
+$result=mysql_query($sql);
+
+// Mysql_num_row is counting table row
+$count=mysql_num_rows($result);
+// If result matched $username and $password, table row must be 1 row
+if($count==1){
+    /*$row = mysql_fetch_assoc($result);
+    if (md5(md5($row['salt']).md5($password)) == $row['password']){
+        session_register("uname");
+        session_register("psw"); 
+        echo "Login Successful";
+        return true;*/
+        echo '<script language="javascript">';
+             echo 'alert("Username already exists, please pick a different one")';
+             echo '</script>';
+             header('Refresh: 1; URL=http://localhost/MS4/parentSignUp.php');
+                die();
+
+
+
+    }
+    else {
+        $usname=$_GET["uname"];
+        $pass=$_GET["psw"];
+        $fName=$_GET["fname"];
+        $lName=$_GET["lname"];  
+        $Address=$_GET["address"];
+        $Email=$_GET["email"]; 
+        $PNum=$_GET["pNum"];
+        $passCheck=$_GET["pswCheck"];
+    
+        echo $usname;
+    }
+}
+else{
+    echo "Wrong Username or Password";
+    return false;
+}
+
+?>

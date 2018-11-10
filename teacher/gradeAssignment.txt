@@ -1,0 +1,41 @@
+	<?php 
+				$tempCounter = 0 ; 
+				$arr1 = $mysqli->query($ViewListCourses) ; 
+				if (is_object ($arr1) )
+				while ( $row = $arr1->fetch_assoc()  ) {
+					if ($tempCounter %2 == 0) {
+					?>
+                    <div class="col-md-6 col-sm-12 wow fadeInLeft">
+                        <div class="media">
+                            <a class="pull-left">
+                                <img src="img/icons/monitor.png" class="media-object" alt="Monitor">
+                            </a>
+                            <div class="media-body">
+                                <h3><?php echo'$row["name"]'?></h3>
+								<p> <?php echo'$row["level_name"]' ?> </p>
+								<p> <?php echo'$row["grade"]' ?> </p>								
+                               
+                            </div>
+                        </div>
+
+                    </div>
+					<?php } else  {?>
+                    <div class="col-md-6 col-sm-12 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="media">
+                            <a  class="pull-left">
+                                <img src="img/icons/cog.png" alt="Cog">
+                            </a>
+                            <div class="media-body">
+                              <h3><?php echo'$row["name"]'?></h3>
+								<p> <?php echo'$row["level_name"]' ?> </p>
+								<p> <?php echo'$row["grade"]' ?> </p>		
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+				   <?php }
+				   $tempCounter++ ;
+				   } 
+				  
+				  ?>

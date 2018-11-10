@@ -1,0 +1,45 @@
+always 
+begin
+if (~enableMD)
+begin
+for ( j = 0 ; j < 40 ; j = j+1 ) 
+			begin 
+			  for (   i = 0 ; i < 40 ; i = i+1  )  
+			  begin 
+					 if (j < 4 && i < 26)
+					 begin
+					 MapX [i][j] = 1'b1; 
+					  
+					 end 
+						else if ( 7 < i && i < 20 && j >9 &&  j < 16 ) 
+						 begin 
+						  MapX [i][j] = 1'b1 ; 
+
+						  end  
+								else if (j > 19 && i > 31) 
+								begin 
+								MapX [i][j] = 1'b1 ;   
+								end 
+									else if (i>13 && i < 22 && j > 19 && j < 34 ) 
+									begin
+									MapX [i][j] = 1'b1 ; 
+
+									end
+										else if (j>33 && i>7 && i <22 )  
+										begin 
+										MapX [i][j] = 1'b1 ; 
+
+										end
+										else 
+										begin 
+										MapX [i][j] = 1'b0 ; 
+
+										end
+			  end 
+ 
+            end
+				            
+            
+                   enableMD = 1'b1 ; 
+end
+end

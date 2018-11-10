@@ -1,0 +1,52 @@
+module md( output reg XenA,XenB,Xin1,Xin2,Xin3,Xin4,mBit , input clk,fir,lir,rir,stop );  
+reg[2:0] counter ; 
+ 
+reg  
+always@(posedge clk ) 
+	begin 
+	if (stop) 
+			begin 
+			//brake 
+			if (counter < 2 ) 
+				begin
+				Xin1 <= 1'b1 ; 
+				Xin2 <= 1'b1 ; 
+				Xin3 <= 1'b1 ; 
+				Xin4 <= 1'b1 ; 
+				counter <= counter +1 ; 
+				end 
+					else 
+						begin 
+						XenA <= 1'b0 ; 
+						XenB <= 1'b0 ; 
+						mBit<= 0 ; 
+						counter <= 0 ;
+					 
+						end 
+			end 
+				else if (fir) 
+					begin 
+				   
+				
+					end 
+				else 
+					begin 
+					Xin1 <= 1'b1 ; 
+					Xin3 <= 1'b1 ; 
+					Xin2 <= 1'b0 ; 
+					Xin4 <= 1'b0 ; 
+					mBit<= 1 ; 
+					
+					end 
+
+
+	end
+	always@ ( posedge clk ) 
+	begin 
+
+
+
+
+end  
+
+endmodule 
